@@ -67,11 +67,10 @@ waitTimes <- function(rawData) {
     #sort each vector in the listOfVecs
     listOfVecs <- lapply(listOfVecs, function(list) sort(list))
 
-    w_i <- lapply(listOfVecs, difference)
-    print(w_i)
-    #mergedVecs <- mergeEm(listOfVecs)
-
-    print(mergedVecs)
+    w_i <- lapply(listOfVecs, function(list) mean(difference(list)))
+    w <- mean(difference(mergeEm(listOfVecs)))
+    
+    return (list(w_i, w))
 }
 
 mergeEm <- function(listOfVecs) {
@@ -149,7 +148,4 @@ difference <- function(vec) {
         return(res)
     }
 }
-
-waitTimes(df)
-
 
