@@ -67,7 +67,9 @@ waitTimes <- function(rawData) {
     #sort each vector in the listOfVecs
     listOfVecs <- lapply(listOfVecs, function(list) sort(list))
 
-    mergedVecs <- mergeEm(listOfVecs)
+    w_i <- lapply(listOfVecs, difference)
+    print(w_i)
+    #mergedVecs <- mergeEm(listOfVecs)
 
     print(mergedVecs)
 }
@@ -136,6 +138,16 @@ mergeEm <- function(listOfVecs) {
         }
     }
     return(res)
+}
+
+difference <- function(vec) {
+    if (length(vec) < 2){
+        return(vec)
+    }
+    else{
+        res <- vec[2:length(vec)] - vec[1:length(vec)-1]
+        return(res)
+    }
 }
 
 waitTimes(df)
