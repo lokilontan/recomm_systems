@@ -26,4 +26,4 @@ meanLengths <- unlist(lapply(1:length(meanLengths), function(i) meanLengths[[i]]
 years <- sort(unique(unlist(dates)))
 years <- years[-1]
 
-plot(years, meanLengths)
+plot(data.frame(years, meanLengths))
